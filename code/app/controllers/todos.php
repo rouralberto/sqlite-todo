@@ -6,7 +6,7 @@ class Todos {
         $id = uriSegment(3);
 
         if ($id === '0') {
-            $title = 'Active Todos';
+            $title = 'Pending Todos';
         } elseif ($id === '1') {
             $title = 'Completed Todos';
         } else {

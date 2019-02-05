@@ -23,7 +23,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand"><a href="/home"><i class="fa fa-check-square-o"></i> <?php echo Flight::get('appname'); ?></a></li>
             <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/todos/0">Active</a></li>
+            <li><a href="/todos/0">Pending</a></li>
             <li><a href="/todos/1">Completed</a></li>
             <li><a href="/todos">All Todos</a></li>
             <li><a href="/categories">Categories</a></li>

@@ -9,7 +9,7 @@ if (controller === 'dashboard' || controller === 'home') {
     $('.sidebar-nav a:contains("Dashboard")').parents('li').addClass('activelink');
 }
 else if (controller === 'todos/0') {
-    $('.sidebar-nav a:contains("Active")').parents('li').addClass('activelink');
+    $('.sidebar-nav a:contains("Pending")').parents('li').addClass('activelink');
 }
 else if (controller === 'todos/1') {
     $('.sidebar-nav a:contains("Completed")').parents('li').addClass('activelink');

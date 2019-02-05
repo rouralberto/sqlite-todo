@@ -16,4 +16,3 @@ services:
       - todonet
     volumes:
       - ./code:/var/www/html
-      - ./db.sqlite:/var/www/html/db.sqlite

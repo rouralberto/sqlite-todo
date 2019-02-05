@@ -3,6 +3,6 @@
         "j4mie/idiorm": "*"
     },
     "autoload": {
-        "classmap": ["public/controllers/"]
+        "classmap": ["app/controllers/"]
     }
 }
