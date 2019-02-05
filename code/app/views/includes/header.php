@@ -21,7 +21,7 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="/home"><i class="fa fa-check-square-o"></i> <?php echo Flight::get('appname');?></a></li>
+            <li class="sidebar-brand"><a href="/home"><i class="fa fa-check-square-o"></i> <?php echo Flight::get('appname'); ?></a></li>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/todos/0">Active</a></li>
             <li><a href="/todos/1">Completed</a></li>
@@ -36,29 +36,23 @@
     <div id="page-content-wrapper">
 
         <div class="content-header">
-            <div class="pull-left"><h1><i class="glyphicon <?php echo $icon;?>"></i> <?php echo $title; ?></h1></div>
+            <div class="pull-left">
+                <h2><i class="glyphicon <?php echo $icon; ?>"></i> <?php echo $title; ?></h2>
+            </div>
             <div class="pull-right" id="addbuttoncontainer">
-                <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#addtodomodal"><i
-                        class="fa fa-plus-circle"></i> Add Todo Item
+                <button class="btn btn-success" data-toggle="modal" data-target="#addtodomodal">
+                    <i class="fa fa-plus-circle"></i> Add Todo Item
                 </button>
             </div>
             <div class="clearfix"></div>
         </div>
 
-        <div id="header_stips" class="progress">
-            <div class="progress-bar progress-bar-primary" style="width: 25%;"></div>
-            <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-            <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
-            <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
-        </div>
-
-        <?php
-        if (getFlashMessage()) {
-        $class = (false !== stripos(getFlashMessage(), 'error')) ? 'danger' : 'success';
-        $icon = ($class === 'danger') ? 'warning' : 'check-circle';
-        ?>
-        <div class="bold alert alert-<?php echo $class; ?>">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <i class="fa fa-<?php echo $icon; ?>"></i> <?php echo getFlashMessage(); clearFlashMessage(); ?>
-        </div>
-<?php } ?>
+        <?php if (getFlashMessage()) {
+            $class = (false !== stripos(getFlashMessage(), 'error')) ? 'danger' : 'success';
+            $icon  = ($class === 'danger') ? 'warning' : 'check-circle'; ?>
+            <div class="bold alert alert-<?php echo $class; ?>">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="fa fa-<?php echo $icon; ?>"></i> <?php echo getFlashMessage();
+                clearFlashMessage(); ?>
+            </div>
+        <?php } ?>

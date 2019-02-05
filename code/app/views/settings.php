@@ -2,7 +2,7 @@
 
 <div class="page-content inset">
     <div class="row">
-        <div class="panel panel-primary" id="setting_buttons">
+        <div class="panel panel-default" id="setting_buttons">
             <div class="panel-heading">
                 <strong><i class="glyphicon glyphicon-cog"></i> Settings</strong>
             </div>

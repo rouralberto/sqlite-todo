@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong><i class="fa fa-folder"></i> Manage Categories</strong>
                     </div>

@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <form id="addtodoform">
             <div class="modal-content">
-                <div class="modal-header label-primary">
+                <div class="modal-header label-default">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
                             class="text-white bold">Add Todo Item</span></h4>
@@ -66,7 +66,7 @@
     <div class="modal-dialog">
         <form id="updatetodoform">
             <div class="modal-content">
-                <div class="modal-header label-primary">
+                <div class="modal-header label-default">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
                             class="text-white bold">Update Todo Item</span></h4>
@@ -157,7 +157,7 @@
 <div class="modal fade" id="modal-dbbackup">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-primary">
+            <div class="modal-header label-default">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><i class="text-white fa fa-upload"></i> <span
                         class="text-white bold">Backup Database</span></h4>
