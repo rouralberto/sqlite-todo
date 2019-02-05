@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo Flight::get('title'); ?></title>
+    <title>sqlite-todo</title>
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
     <link href="/assets/plugins/jGrowl/jquery.jgrowl.css" rel="stylesheet">
-    <link href="/assets/plugins/select2/se0lect2.css" rel="stylesheet">
+    <link href="/assets/plugins/select2/select2.css" rel="stylesheet">
     <link href="/assets/plugins/select2/select2-bootstrap.css" rel="stylesheet">
     <link href="/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <link href="/assets/plugins/summernote/summernote.css" rel="stylesheet">
