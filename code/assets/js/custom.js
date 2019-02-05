@@ -1,7 +1,3 @@
-/**
- * Created by SARFRAZ on 1/18/14.
- */
-
 // select active navigation item
 $('.sidebar-nav a').parents('li').removeClass('activelink');
 
@@ -33,26 +29,6 @@ $('.page-content table').not('table.nodatatable').dataTable({
     "bAutoWidth": true,
     "bLengthChange": false,
     "iDisplayLength": 25
-});
-
-// replace selects with select2
-$('select').select2({placeholder: 'Choose'});
-
-// wysiwig for bootstrap
-$('.editor').summernote({
-    height: 100,
-    focus: true,
-    toolbar: [
-        //['style', ['style']], // no style button
-        ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['fontsize', ['fontsize']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']],
-        ['insert', ['picture', 'link']], // no insert buttons
-        //['table', ['table']], // no table button
-        ['help', ['help']] //no help button
-    ]
 });
 
 // confirm modal
@@ -91,17 +67,6 @@ $('.modal-footer .btnDelete').click(function () {
 // for tooltips
 $(".tip").tooltip();
 
-// inline bootstrap editable
-$.fn.editable.defaults.mode = 'popup';
-
-$('a.editable').editable({
-    validate: function (value) {
-        if ($.trim(value) == '') return 'Cannot be empty!';
-    }
-});
-
-$('a.editable').editable();
-
 // add todoitem
 $('#btnAddTodo').click(function () {
     var category = $(this).closest('#addtodomodal').find('#category').val();
@@ -114,7 +79,7 @@ $('#btnAddTodo').click(function () {
 $('#addtodoform').submit(function () {
     var category = $(this).closest('#addtodomodal').find('#category').val();
     var todo = $(this).closest('#addtodomodal').find('#todo').val();
-    var detail = $(this).closest('#addtodomodal').find('#detail').code();
+    var detail = $(this).closest('#addtodomodal').find('#detail').val();
     var $this = $(this);
 
     $.post(basePath + 'addtodo', {"category": category, "todo": todo, "detail": detail}, function (response) {
@@ -122,8 +87,6 @@ $('#addtodoform').submit(function () {
 
         if (response.indexOf('Error') < 0) {
             $this.closest('#addtodomodal').find('form')[0].reset();
-            $this.closest('#addtodomodal').find('#category').select2();
-            $this.closest('#addtodomodal').find('#detail').code('');
         }
 
     });
@@ -183,9 +146,9 @@ $('a.edit-todo').click(function () {
     $updateTr = $(this).closest('tr');
     todoId = $(this).data('id');
 
-    $updateModal.find('#category').select2().select2("val", category);
     $updateModal.find('#todo').val(todo);
-    $updateModal.find('#detail').code(detail);
+    $updateModal.find('#category').val(category);
+    $updateModal.find('#detail').val(detail);
 
     $updateModal.closest('#updatetodomodal').modal('show');
 });
@@ -202,8 +165,8 @@ $('#btnUpdateTodo').click(function () {
 $('#updatetodoform').submit(function () {
     var category = $(this).closest('#updatetodomodal').find('#category').val();
     var categoryName = $(this).closest('#updatetodomodal').find('#category option:selected').text();
+    var detail = $(this).closest('#updatetodomodal').find('#detail').val();
     var todo = $(this).closest('#updatetodomodal').find('#todo').val();
-    var detail = $(this).closest('#updatetodomodal').find('#detail').code();
 
     $.post(basePath + 'updatetodo', {
         "id": todoId,
