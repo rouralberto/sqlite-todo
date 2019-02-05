@@ -1,10 +1,5 @@
 version: '3.7'
 
-networks:
-  todonet:
-    external: true
-    name: localdev
-
 services:
   web:
     build:
@@ -12,7 +7,6 @@ services:
     container_name: sqlite-todo
     environment:
       VIRTUAL_HOST: todo.docker
-    networks:
-      - todonet
+    network_mode: bridge
     volumes:
       - ./code:/var/www/html
