@@ -26,10 +26,6 @@ a {
     width: 100%;
 }
 
-.page-content {
-    margin-top: -5px;
-}
-
 .content-header {
     background-color: rgba(200, 200, 200, .3);
 }
@@ -94,7 +90,7 @@ a {
 }
 
 .inset {
-    padding: 30px;
+    padding: 15px;
 }
 
 @media (max-width: 767px) {
@@ -176,14 +172,4 @@ i.glyphicon-ok {
 
 i.glyphicon-repeat {
     color: #D08E39;
-}
-
-#setting_buttons {
-    width: 300px;
-    margin: 0 auto;
-}
-
-#setting_buttons button {
-    width: 100%;
-    margin: 5px auto;
 }
