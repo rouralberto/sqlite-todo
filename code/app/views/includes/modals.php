@@ -6,39 +6,28 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
-                                class="bold">Add Todo Item</span></h4>
+                    <h4 class="modal-title">
+                        <i class="fa fa-check-square-o"></i> <span class="bold">Add Todo Item</span>
+                    </h4>
                 </div>
                 <div class="modal-body">
 
                     <div class="form-group">
                         <label for="category" class="control-label">Category</label>
-                        <select class="form-control select2"
-                                title="Category"
-                                name="category"
-                                id="category"
-                                required>
+                        <select class="form-control" name="category" id="category" required>
                             <option value="">Select</option>
                             <?php echo Flight::get('categories_options'); ?>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="todo">Todo Content</label>
-                        <input class="form-control"
-                               placeholder="Todo Content"
-                               title="Todo Content"
-                               name="todo"
-                               id="todo"
-                               required>
+                        <label for="todo">Todo Title</label>
+                        <input class="form-control" placeholder="Todo Content" name="todo" id="todo" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="detail">Todo Details</label>
-                        <textarea class="editor form-control" rows="3"
-                                  placeholder="Todo Details"
-                                  name="detail"
-                                  id="detail"></textarea>
+                        <label for="detail">Todo Description</label>
+                        <textarea class="editor form-control" rows="3" name="detail" id="detail"></textarea>
                     </div>
                 </div>
 
@@ -46,7 +35,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>
                         Close
                     </button>
-                    <button type="submit" id="btnAddTodo" class="btn btn-success"><i class="fa fa-save"></i> Add Todo
+                    <button type="submit" id="btnAddTodo" class="btn btn-success">
+                        <i class="fa fa-save"></i> Add Todo
                     </button>
                 </div>
 
@@ -76,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="category" class="control-label">Category</label>
-                        <select class="form-control select2"
+                        <select class="form-control"
                                 title="Category"
                                 name="category"
                                 id="category"

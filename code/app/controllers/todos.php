@@ -29,7 +29,7 @@ class Todos {
                 FROM todos t
                 LEFT OUTER JOIN categories c ON t.categories_id = c.id
                 $where
-                ORDER BY t.completed, t.id desc
+                ORDER BY t.completed, t.id asc
             ")->find_array();
 
         $todos = Todos_Presenter::getTodos($todos);

@@ -10,7 +10,7 @@ class Dashboard {
                 FROM todos t
                 LEFT OUTER JOIN categories c ON t.categories_id = c.id
                 WHERE t.completed = '0'
-                ORDER BY t.id desc
+                ORDER BY t.id asc
                 LIMIT 10
             ")->find_array();
 
