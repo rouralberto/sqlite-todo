@@ -4,10 +4,10 @@
     <div class="modal-dialog">
         <form id="addtodoform">
             <div class="modal-content">
-                <div class="modal-header label-default">
+                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
-                            class="text-white bold">Add Todo Item</span></h4>
+                                class="bold">Add Todo Item</span></h4>
                 </div>
                 <div class="modal-body">
 
@@ -66,10 +66,11 @@
     <div class="modal-dialog">
         <form id="updatetodoform">
             <div class="modal-content">
-                <div class="modal-header label-default">
+                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
-                            class="text-white bold">Update Todo Item</span></h4>
+                    <h4 class="modal-title">
+                        <i class="fa fa-check-square-o"></i> <span class="bold">Update Todo Item</span>
+                    </h4>
                 </div>
                 <div class="modal-body">
 
@@ -127,14 +128,15 @@
 <div class="modal fade" id="modal-delete-confirm">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-danger">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-check-square-o"></i> <span
-                        class="text-white bold">Delete</span></h4>
+                <h4 class="modal-title">
+                    <i class="fa fa-check-square-o"></i> <span class="bold">Delete</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <p class="pull-left" style="margin-right: 10px;"><i
-                        class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
+                            class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
 
                 <p>You are about to delete, this procedure is irreversible.</p>
 
@@ -157,10 +159,11 @@
 <div class="modal fade" id="modal-dbbackup">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-default">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="text-white fa fa-upload"></i> <span
-                        class="text-white bold">Backup Database</span></h4>
+                <h4 class="modal-title">
+                    <i class="fa fa-upload"></i> <span class="bold">Backup Database</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -185,10 +188,11 @@
 <div class="modal fade" id="modal-dbrestore">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-success">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="text-white fa fa-download"></i> <span
-                        class="text-white bold">Restore Database</span></h4>
+                <h4 class="modal-title">
+                    <i class="fa fa-download"></i> <span class="bold">Restore Database</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <?php echo $backups; ?>
@@ -209,14 +213,15 @@
 <div class="modal fade" id="modal-dellalltodos-confirm">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-warning">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-trash-o"></i> <span
-                        class="text-white bold">Delete All Todos</span></h4>
+                <h4 class="modal-title">
+                    <i class="fa fa-trash-o"></i> <span class="bold">Delete All Todos</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <p class="pull-left" style="margin-right: 10px;"><i
-                        class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
+                            class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
 
                 <p>You are about to delete all todos, this procedure is irreversible.</p>
 
@@ -240,14 +245,15 @@
 <div class="modal fade" id="modal-cleardb-confirm">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-danger">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="glyphicon glyphicon-warning-sign"></i> <span
-                        class="text-white bold">Clear Database</span></h4>
+                <h4 class="modal-title">
+                    <i class="glyphicon glyphicon-warning-sign"></i> <span class="bold">Clear Database</span>
+                </h4>
             </div>
             <div class="modal-body">
                 <p class="pull-left" style="margin-right: 10px;"><i
-                        class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
+                            class="glyphicon-4x glyphicon glyphicon-question-sign"></i></p>
 
                 <p>You are about to clear database, this procedure is irreversible.</p>
 
@@ -271,10 +277,11 @@
 <div class="modal fade" id="modal-detail">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header label-success">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="glyphicon glyphicon-info-sign"></i> <span
-                        class="text-white bold">Todo Details</span></h4>
+                <h4 class="modal-title">
+                    <i class="glyphicon glyphicon-info-sign"></i> <span class="bold">Todo Details</span>
+                </h4>
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer">
