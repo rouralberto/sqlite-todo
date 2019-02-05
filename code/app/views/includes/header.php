@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?php echo $title; ?></title>
-	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
 	<link href="/assets/plugins/jGrowl/jquery.jgrowl.css" rel="stylesheet">
@@ -13,6 +13,7 @@
 	<link href="/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="/assets/plugins/summernote/summernote.css" rel="stylesheet">
 	<link href="/assets/css/custom.css" rel="stylesheet">
+	<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAABaxwAAX9QA////AABl4AAAbPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAEEUAAAAACIkERQiIgACIkEREUIiIDM0FEQRQzMzMzNDM0EUMzNVVVVVVBRVVVVVVVVVQUVVZmZmZmZkFGZmZmZmZmZGZgAAAAAAAAAAEAAAAAAAAAGAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA" rel="icon" type="image/x-icon"/>
 </head>
 
 <body>
