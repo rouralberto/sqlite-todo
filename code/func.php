@@ -1,53 +1,82 @@
 <?php
-// custom functions will go here
 
-function uriSegment($index) {
-    $request = (array) Flight::request();
-    $url = explode('/', $request['url']);
-    return $url[--$index];
+/**
+ * @param $index
+ *
+ * @return mixed
+ */
+function uriSegment( $index ) {
+	$request = (array) Flight::request();
+	$url     = explode( '/', $request['url'] );
+
+	return $url[ -- $index ];
 }
 
-// dump flightphp request object
-function dump_request($exit = true) {
-    $request = Flight::request();
-    echo '<pre>';
-    print_r($request);
-    echo '</pre>';
+/**
+ * dump flightphp request object
+ *
+ * @param bool $exit
+ */
+function dump_request( $exit = true ) {
+	$request = Flight::request();
+	echo '<pre>';
+	print_r( $request );
+	echo '</pre>';
 
-    if ($exit) {
-        exit();
-    }
+	if ( $exit ) {
+		exit();
+	}
 }
 
-// make dropdown out of array
-function makeDropDown(array $array) {
-    $options = '';
-    foreach ($array as $arrayItem) {
-        $options .= "<option value=\"$arrayItem[id]\">$arrayItem[name]</option>" . PHP_EOL;
-    }
+/**
+ * make dropdown out of array
+ *
+ * @param array $array
+ *
+ * @return string
+ */
+function makeDropDown( array $array ) {
+	$options = '';
+	foreach ( $array as $arrayItem ) {
+		$options .= "<option value=\"$arrayItem[id]\">$arrayItem[name]</option>" . PHP_EOL;
+	}
 
-    return $options;
+	return $options;
 }
 
-// redirect flight views with a message
-function flashRedirect($page, $message) {
-    setFlashMessage($message);
-    Flight::redirect($page);
-    exit;
+/**
+ * redirect flight views with a message
+ *
+ * @param $page
+ * @param $message
+ */
+function flashRedirect( $page, $message ) {
+	setFlashMessage( $message );
+	Flight::redirect( $page );
+	exit;
 }
 
-function setFlashMessage($message) {
-    $_SESSION['__flash_message__'] = $message;
+/**
+ * @param $message
+ */
+function setFlashMessage( $message ) {
+	$_SESSION['__flash_message__'] = $message;
 }
 
+/**
+ * @return mixed
+ */
 function getFlashMessage() {
-    return $_SESSION['__flash_message__'];
+	return $_SESSION['__flash_message__'];
 }
 
+/**
+ *
+ */
 function clearFlashMessage() {
-    unset($_SESSION['__flash_message__']);
-    $flashMessage = $_SESSION['__flash_message__'];
-    unset($_SESSION['variable'], $flashMessage);
+	unset( $_SESSION['__flash_message__'] );
+	$flashMessage = $_SESSION['__flash_message__'];
+	unset( $_SESSION['variable'], $flashMessage );
 }
 
 /**
@@ -57,20 +86,21 @@ function clearFlashMessage() {
  *
  * @param array $array
  * @param bool $exit
+ *
  * @return mixed
  */
-function pretty_print(array $array, $exit = true) {
-    if (!$array) {
-        return false;
-    }
+function pretty_print( array $array, $exit = true ) {
+	if ( ! $array ) {
+		return false;
+	}
 
-    echo '<pre>';
-    print_r($array);
-    echo '</pre>';
+	echo '<pre>';
+	print_r( $array );
+	echo '</pre>';
 
-    if ($exit) {
-        exit;
-    }
+	if ( $exit ) {
+		exit;
+	}
 }
 
 /**
@@ -79,18 +109,19 @@ function pretty_print(array $array, $exit = true) {
  * var_dumps given data and dies
  *
  * @param $data
+ *
  * @return mixed
  */
-function dd($data) {
-    if (!$data) {
-        return false;
-    }
+function dd( $data ) {
+	if ( ! $data ) {
+		return false;
+	}
 
-    echo '<pre>';
-    var_dump($data);
-    echo '</pre>';
+	echo '<pre>';
+	var_dump( $data );
+	echo '</pre>';
 
-    exit;
+	exit;
 }
 
 /**
@@ -101,33 +132,34 @@ function dd($data) {
  * @param $name
  * @param null $data
  * @param bool $jsEval
+ *
  * @return bool
  * @author Sarfraz
  */
-function logConsole($name, $data = null, $jsEval = false) {
-    if (!$name) {
-        return false;
-    }
+function logConsole( $name, $data = null, $jsEval = false ) {
+	if ( ! $name ) {
+		return false;
+	}
 
-    $isevaled = false;
-    $type = ($data || gettype($data)) ? 'Type: ' . gettype($data) : '';
+	$isevaled = false;
+	$type     = ( $data || gettype( $data ) ) ? 'Type: ' . gettype( $data ) : '';
 
-    if ($jsEval && (is_array($data) || is_object($data))) {
-        $data = 'eval(' . preg_replace('#[\s\r\n\t\0\x0B]+#', '', json_encode($data)) . ')';
-        $isevaled = true;
-    } else {
-        $data = json_encode($data);
-    }
+	if ( $jsEval && ( is_array( $data ) || is_object( $data ) ) ) {
+		$data     = 'eval(' . preg_replace( '#[\s\r\n\t\0\x0B]+#', '', json_encode( $data ) ) . ')';
+		$isevaled = true;
+	} else {
+		$data = json_encode( $data );
+	}
 
-    # sanitalize
-    $data = $data ? $data : '';
-    $search_array = array("#'#", '#""#', "#''#", "#\n#", "#\r\n#");
-    $replace_array = array('"', '', '', '\\n', '\\n');
-    $data = preg_replace($search_array, $replace_array, $data);
-    $data = ltrim(rtrim($data, '"'), '"');
-    $data = $isevaled ? $data : ($data[0] === "'") ? $data : "'" . $data . "'";
+	# sanitalize
+	$data          = $data ? $data : '';
+	$search_array  = array( "#'#", '#""#', "#''#", "#\n#", "#\r\n#" );
+	$replace_array = array( '"', '', '', '\\n', '\\n' );
+	$data          = preg_replace( $search_array, $replace_array, $data );
+	$data          = ltrim( rtrim( $data, '"' ), '"' );
+	$data          = $isevaled ? $data : ( $data[0] === "'" ) ? $data : "'" . $data . "'";
 
-    $js = <<<JSCODE
+	$js = <<<JSCODE
 \n<script>
      // fallback - to deal with IE (or browsers that don't have console)
      if (! window.console) console = {};
@@ -142,7 +174,7 @@ function logConsole($name, $data = null, $jsEval = false) {
 </script>
 JSCODE;
 
-    echo $js;
+	echo $js;
 }
 
 /**
@@ -152,24 +184,25 @@ JSCODE;
  *
  * @param $name
  * @param $data
+ *
  * @author Sarfraz
  */
-function varLog($name, $data) {
-    $type = ($data || gettype($data)) ? gettype($data) : '';
+function varLog( $name, $data ) {
+	$type = ( $data || gettype( $data ) ) ? gettype( $data ) : '';
 
-    $output = $data;
-    if (is_array($data) || is_object($data)) {
-        $output = '<table style="color:#fff; font-size:14px;" width="100%"><tr><td width="100" style="border:1px solid #ccc; border-bottom:0;"><strong>Propery</strong></td><td width="100" style="border:1px solid #ccc; border-bottom:0;"><strong>Value</strong></td></tr>';
+	$output = $data;
+	if ( is_array( $data ) || is_object( $data ) ) {
+		$output = '<table style="color:#fff; font-size:14px;" width="100%"><tr><td width="100" style="border:1px solid #ccc; border-bottom:0;"><strong>Propery</strong></td><td width="100" style="border:1px solid #ccc; border-bottom:0;"><strong>Value</strong></td></tr>';
 
-        foreach ($data as $key => $value) {
-            $key = preg_replace('~[\r\n]+~', '', $key);
-            $value = preg_replace('~[\r\n]+~', '', $value);
+		foreach ( $data as $key => $value ) {
+			$key   = preg_replace( '~[\r\n]+~', '', $key );
+			$value = preg_replace( '~[\r\n]+~', '', $value );
 
-            $output .= '<table style="color:#fff; font-size:13px;" width="100%"><tr><td width="100" style="border:1px solid #ccc; border-bottom:0;">' . $key . '</td><td width="100" style="border:1px solid #ccc; border-bottom:0;">' . $value . '</td></tr></table>';
-        }
-    }
+			$output .= '<table style="color:#fff; font-size:13px;" width="100%"><tr><td width="100" style="border:1px solid #ccc; border-bottom:0;">' . $key . '</td><td width="100" style="border:1px solid #ccc; border-bottom:0;">' . $value . '</td></tr></table>';
+		}
+	}
 
-    $js = <<< JSCODE
+	$js = <<< JSCODE
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         (function () {
@@ -214,107 +247,148 @@ function varLog($name, $data) {
     </script>
 JSCODE;
 
-    echo $js;
+	echo $js;
 }
 
-function dateFormat($date, $addTime = false) {
-    if (strtotime($date)) {
+/**
+ * @param $date
+ * @param bool $addTime
+ *
+ * @return false|string
+ */
+function dateFormat( $date, $addTime = false ) {
+	if ( strtotime( $date ) ) {
 
-        if ($addTime) {
-            return date('F d, Y h:i', strtotime($date));
-        }
+		if ( $addTime ) {
+			return date( 'F d, Y h:i', strtotime( $date ) );
+		}
 
-        return date('F d, Y', strtotime($date));
-    }
-    return '';
+		return date( 'F d, Y', strtotime( $date ) );
+	}
+
+	return '';
 }
 
+/**
+ * @return false|string
+ */
 function getTimeDate() {
-    return date('Y-m-d h:i:s');
+	return date( 'Y-m-d h:i:s' );
 }
 
-function getMysqlDate($date) {
-    if (!$date) {
-        return false;
-    }
+/**
+ * @param $date
+ *
+ * @return bool|false|string
+ */
+function getMysqlDate( $date ) {
+	if ( ! $date ) {
+		return false;
+	}
 
-    return date('Y-m-d', strtotime($date));
+	return date( 'Y-m-d', strtotime( $date ) );
 }
 
-function getMysqlDateTime($datetime) {
-    return date('Y-m-d h:i:s', strtotime($datetime));
+/**
+ * @param $datetime
+ *
+ * @return false|string
+ */
+function getMysqlDateTime( $datetime ) {
+	return date( 'Y-m-d h:i:s', strtotime( $datetime ) );
 }
 
-function arrayFlatten(array $array) {
-    $flat = array(); // initialize return array
-    $stack = array_values($array); // initialize stack
-    while ($stack) // process stack until done
-    {
-        $value = array_shift($stack);
-        if (is_array($value)) // a value to further process
-        {
-            $stack = array_merge(array_values($value), $stack);
-        } else // a value to take
-        {
-            $flat[] = $value;
-        }
-    }
-    return $flat;
+/**
+ * @param array $array
+ *
+ * @return array
+ */
+function arrayFlatten( array $array ) {
+	$flat  = array(); // initialize return array
+	$stack = array_values( $array ); // initialize stack
+	while ( $stack ) // process stack until done
+	{
+		$value = array_shift( $stack );
+		if ( is_array( $value ) ) // a value to further process
+		{
+			$stack = array_merge( array_values( $value ), $stack );
+		} else // a value to take
+		{
+			$flat[] = $value;
+		}
+	}
+
+	return $flat;
 }
 
+/**
+ * @return string
+ */
 function fullURL() {
-    $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
-    $sp = strtolower($_SERVER["SERVER_PROTOCOL"]);
-    $protocol = substr($sp, 0, strpos($sp, "/")) . $s;
-    $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
-    return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
+	$s        = empty( $_SERVER["HTTPS"] ) ? '' : ( $_SERVER["HTTPS"] == "on" ) ? "s" : "";
+	$sp       = strtolower( $_SERVER["SERVER_PROTOCOL"] );
+	$protocol = substr( $sp, 0, strpos( $sp, "/" ) ) . $s;
+	$port     = ( $_SERVER["SERVER_PORT"] == "80" ) ? "" : ( ":" . $_SERVER["SERVER_PORT"] );
+
+	return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
 }
 
-function toggleEncryption($text, $key = '') {
-    // return text unaltered if the key is blank
-    if ($key == '') {
-        $key = '!@a7z%^&*|+';
-    }
+/**
+ * @param $text
+ * @param string $key
+ *
+ * @return mixed
+ */
+function toggleEncryption( $text, $key = '' ) {
+	// return text unaltered if the key is blank
+	if ( $key == '' ) {
+		$key = '!@a7z%^&*|+';
+	}
 
-    // remove the spaces in the key
-    $key = str_replace(' ', '', $key);
-    if (strlen($key) < 8) {
-        exit('key error');
-    }
-    // set key length to be no more than 32 characters
-    $key_len = strlen($key);
-    if ($key_len > 32) {
-        $key_len = 32;
-    }
+	// remove the spaces in the key
+	$key = str_replace( ' ', '', $key );
+	if ( strlen( $key ) < 8 ) {
+		exit( 'key error' );
+	}
+	// set key length to be no more than 32 characters
+	$key_len = strlen( $key );
+	if ( $key_len > 32 ) {
+		$key_len = 32;
+	}
 
-    $k = array(); // key array
-    // fill key array with the bitwise AND of the ith key character and 0x1F
-    for ($i = 0; $i < $key_len; ++$i) {
-        $k[$i] = ord($key{$i}) & 0x1F;
-    }
+	$k = array(); // key array
+	// fill key array with the bitwise AND of the ith key character and 0x1F
+	for ( $i = 0; $i < $key_len; ++ $i ) {
+		$k[ $i ] = ord( $key{$i} ) & 0x1F;
+	}
 
-    // perform encryption/decryption
-    for ($i = 0; $i < strlen($text); ++$i) {
-        $e = ord($text{$i});
-        // if the bitwise AND of this character and 0xE0 is non-zero
-        // set this character to the bitwise XOR of itself
-        // and the ith key element, wrapping around key length
-        // else leave this character alone
-        if ($e & 0xE0) {
-            $text{$i} = chr($e ^ $k[$i % $key_len]);
-        }
-    }
-    return $text;
+	// perform encryption/decryption
+	for ( $i = 0; $i < strlen( $text ); ++ $i ) {
+		$e = ord( $text{$i} );
+		// if the bitwise AND of this character and 0xE0 is non-zero
+		// set this character to the bitwise XOR of itself
+		// and the ith key element, wrapping around key length
+		// else leave this character alone
+		if ( $e & 0xE0 ) {
+			$text{$i} = chr( $e ^ $k[ $i % $key_len ] );
+		}
+	}
+
+	return $text;
 }
 
-function shortURL($url) {
-    $url = urlencode($url);
-    $ch = curl_init(
-        'http://api.bitly.com/v3/shorten?login=sarfraznawaz2005&apiKey=R_182a565c28e4eafd0e23aa113464e73e&longUrl=' . $url
-    );
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($ch);
-    $resultArray = json_decode($result, true);
-    $shortURL = $resultArray['data']['url'];
-    return $shortURL ? $shortURL : $url;
+/**
+ * @param $url
+ *
+ * @return string
+ */
+function shortURL( $url ) {
+	$url = urlencode( $url );
+	$ch  = curl_init( 'http://api.bitly.com/v3/shorten?login=sarfraznawaz2005&apiKey=R_182a565c28e4eafd0e23aa113464e73e&longUrl=' . $url );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	$result      = curl_exec( $ch );
+	$resultArray = json_decode( $result, true );
+	$shortURL    = $resultArray['data']['url'];
+
+	return $shortURL ? $shortURL : $url;
 }
