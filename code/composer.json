@@ -1,8 +1,13 @@
 {
     "require": {
-        "j4mie/idiorm": "*"
+        "j4mie/idiorm": "*",
+        "mikecao/flight": "^1.3"
     },
     "autoload": {
-        "classmap": ["app/controllers/"]
+        "classmap": [
+            "app/controllers/",
+            "app/classes/",
+            "app/presenters/"
+        ]
     }
 }

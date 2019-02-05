@@ -11,14 +11,8 @@ require_once 'vendor/autoload.php';
 // website configuration file
 require_once 'config.php';
 
-// flight framework
-require 'core/flight/Flight.php';
-
 // custom functions
 require_once 'func.php';
-
-// autoload classes
-require_once('autoload.php');
 
 // error logging
 if ($config['log_errors']) {
@@ -36,7 +30,7 @@ if ($config['log_errors']) {
 Flight::set('flight.views.path', 'app/views/');
 
 // set base path variable to be used in setting css js files in views
-$request = (array) Flight::request();
+$request = (array)Flight::request();
 Flight::set('base', $request['base']);
 Flight::set('controller', $request['url']);
 Flight::set('lastSegment', end(explode('/', $request['url'])));
@@ -59,19 +53,10 @@ if ($config['database_enable']) {
     }
 }
 
-// setup custom 404 page
-/*
-Flight::map('notFound', function () {
-    //include 'errors/404.html';
-});
-*/
-
-
 // set global variables
 Flight::set('appname', $config['appname']);
 
-///////// setup routes /////////////
-////////////////////////////////////
+// setup routes
 require_once 'routes.php';
 
 // flight now

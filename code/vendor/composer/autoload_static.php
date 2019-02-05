@@ -6,8 +6,14 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit0b38dda1d96aceff6bb117e149cf5a2c
 {
+    public static $files = array (
+        'fc73bab8d04e21bcdda37ca319c63800' => __DIR__ . '/..' . '/mikecao/flight/flight/autoload.php',
+        '5b7d984aab5ae919d3362ad9588977eb' => __DIR__ . '/..' . '/mikecao/flight/flight/Flight.php',
+    );
+
     public static $classMap = array (
         'Categories' => __DIR__ . '/../..' . '/app/controllers/categories.php',
+        'Categories_Presenter' => __DIR__ . '/../..' . '/app/presenters/categories_presenter.php',
         'Common' => __DIR__ . '/../..' . '/app/controllers/common.php',
         'Dashboard' => __DIR__ . '/../..' . '/app/controllers/dashboard.php',
         'IdiormMethodMissingException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
@@ -16,7 +22,9 @@ class ComposerStaticInit0b38dda1d96aceff6bb117e149cf5a2c
         'IdiormStringException' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
         'ORM' => __DIR__ . '/..' . '/j4mie/idiorm/idiorm.php',
         'Settings' => __DIR__ . '/../..' . '/app/controllers/settings.php',
+        'Table' => __DIR__ . '/../..' . '/app/classes/Table.php',
         'Todos' => __DIR__ . '/../..' . '/app/controllers/todos.php',
+        'Todos_Presenter' => __DIR__ . '/../..' . '/app/presenters/todos_presenter.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

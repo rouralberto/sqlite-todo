@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Categories' => $baseDir . '/app/controllers/categories.php',
+    'Categories_Presenter' => $baseDir . '/app/presenters/categories_presenter.php',
     'Common' => $baseDir . '/app/controllers/common.php',
     'Dashboard' => $baseDir . '/app/controllers/dashboard.php',
     'IdiormMethodMissingException' => $vendorDir . '/j4mie/idiorm/idiorm.php',
@@ -15,5 +16,7 @@ return array(
     'IdiormStringException' => $vendorDir . '/j4mie/idiorm/idiorm.php',
     'ORM' => $vendorDir . '/j4mie/idiorm/idiorm.php',
     'Settings' => $baseDir . '/app/controllers/settings.php',
+    'Table' => $baseDir . '/app/classes/Table.php',
     'Todos' => $baseDir . '/app/controllers/todos.php',
+    'Todos_Presenter' => $baseDir . '/app/presenters/todos_presenter.php',
 );

@@ -35,6 +35,7 @@ class Dispatcher {
      * @param string $name Event name
      * @param array $params Callback parameters
      * @return string Output of callback
+     * @throws \Exception
      */
     public function run($name, array $params = array()) {
         $output = '';
@@ -119,6 +120,7 @@ class Dispatcher {
      * @param array $filters Chain of filters
      * @param array $params Method parameters
      * @param mixed $output Method output
+     * @throws \Exception
      */
     public function filter($filters, &$params, &$output) {
         $args = array(&$params, &$output);
@@ -155,6 +157,11 @@ class Dispatcher {
      * @return mixed Function results
      */
     public static function callFunction($func, array &$params = array()) {
+        // Call static method
+        if (is_string($func) && strpos($func, '::') !== false) {
+            return call_user_func_array($func, $params);
+        }
+
         switch (count($params)) {
             case 0:
                 return $func();
@@ -183,7 +190,7 @@ class Dispatcher {
     public static function invokeMethod($func, array &$params = array()) {
         list($class, $method) = $func;
 
-		$instance = is_object($class);
+        $instance = is_object($class);
 		
         switch (count($params)) {
             case 0:
