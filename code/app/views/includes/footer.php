@@ -13,13 +13,12 @@
 <script src="/assets/plugins/summernote/summernote.min.js"></script>
 <script src="/assets/plugins/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script src="/assets/plugins/jGrowl/jquery.jgrowl.js"></script>
-
 <script>
     var controller = "<?php echo trim( Flight::get( 'controller' ), '/' ); ?>",
         basePath = "/",
         lastSegment = "<?php echo Flight::get( 'lastSegment' ); ?>";
 </script>
-<script src="/assets/js/custom.js?v=<?php echo time(); ?>"></script>
+<script src="/assets/js/custom.js"></script>
 
 </body>
 </html>

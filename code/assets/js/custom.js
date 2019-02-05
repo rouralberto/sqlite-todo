@@ -5,7 +5,7 @@
 // select active navigation item
 $('.sidebar-nav a').parents('li').removeClass('activelink');
 
-if (controller === 'dashboard' || controller === 'home') {
+if (controller === '') {
     $('.sidebar-nav a:contains("Dashboard")').parents('li').addClass('activelink');
 }
 else if (controller === 'todos/0') {
@@ -36,7 +36,7 @@ $('.page-content table').not('table.nodatatable').dataTable({
 });
 
 // replace selects with select2
-$('select').select2({ placeholder: 'Choose' });
+$('select').select2({placeholder: 'Choose'});
 
 // wysiwig for bootstrap
 $('.editor').summernote({
@@ -78,7 +78,7 @@ $('.modal-footer .btnDelete').click(function () {
     var $lastTR = $(this).closest('#modal-delete-confirm').data('tr');
 
     $.post(basePath + 'delete', {"id": id, "page": page}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Delete Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Delete Notification'});
 
         if (response.indexOf('Error') < 0) {
             $lastTR.slideUp('slow');
@@ -106,7 +106,7 @@ $('a.editable').editable();
 $('#btnAddTodo').click(function () {
     var category = $(this).closest('#addtodomodal').find('#category').val();
     if (!category) {
-        $.jGrowl('Please choose a category first!', { sticky: false, header: 'Error' });
+        $.jGrowl('Please choose a category first!', {sticky: false, header: 'Error'});
         return false;
     }
 });
@@ -118,7 +118,7 @@ $('#addtodoform').submit(function () {
     var $this = $(this);
 
     $.post(basePath + 'addtodo', {"category": category, "todo": todo, "detail": detail}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Add Todo Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Add Todo Notification'});
 
         if (response.indexOf('Error') < 0) {
             $this.closest('#addtodomodal').find('form')[0].reset();
@@ -148,7 +148,7 @@ $('.todo-process').click(function () {
     }
 
     $.post(action, {"id": id}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Todo Status Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Todo Status Notification'});
 
         if (response.indexOf('Error') < 0) {
             if (controller !== 'todos' && lastSegment <= 1) {
@@ -194,7 +194,7 @@ $('a.edit-todo').click(function () {
 $('#btnUpdateTodo').click(function () {
     var category = $(this).closest('#updatetodomodal').find('#category').val();
     if (!category) {
-        $.jGrowl('Please choose a category first!', { sticky: false, header: 'Error' });
+        $.jGrowl('Please choose a category first!', {sticky: false, header: 'Error'});
         return false;
     }
 });
@@ -205,8 +205,13 @@ $('#updatetodoform').submit(function () {
     var todo = $(this).closest('#updatetodomodal').find('#todo').val();
     var detail = $(this).closest('#updatetodomodal').find('#detail').code();
 
-    $.post(basePath + 'updatetodo', {"id": todoId, "category": category, "todo": todo, "detail": detail}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Update Todo Notification' });
+    $.post(basePath + 'updatetodo', {
+        "id": todoId,
+        "category": category,
+        "todo": todo,
+        "detail": detail
+    }, function (response) {
+        $.jGrowl(response, {sticky: false, header: 'Update Todo Notification'});
 
         if (response.indexOf('Error') < 0) {
             var categoryPath = basePath + 'todos/' + category;
@@ -224,7 +229,7 @@ $('#updatetodoform').submit(function () {
     return false;
 });
 
-$('[rel=hover_popover]').popover({ "trigger": "hover", "placement": "right"});
+$('[rel=hover_popover]').popover({"trigger": "hover", "placement": "right"});
 
 $('#backup').click(function () {
     $('#modal-dbbackup').modal('show');
@@ -246,12 +251,12 @@ $('.btnBackup').click(function () {
     var name = $(this).closest('#modal-dbbackup').find('#name').val();
 
     if (!name) {
-        $.jGrowl('Please enter backup filename first!', { sticky: false, header: 'Error' });
+        $.jGrowl('Please enter backup filename first!', {sticky: false, header: 'Error'});
         return false;
     }
 
     $.post(basePath + 'backup', {"name": name}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Backup Database Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Backup Database Notification'});
     });
 
     $('#modal-dbbackup').modal('hide');
@@ -262,12 +267,12 @@ $('.btnRestore').click(function () {
     var name = $('#modal-dbrestore').find('.dbbackup:checked').val();
 
     if (!name) {
-        $.jGrowl('Please select backup file first!', { sticky: false, header: 'Error' });
+        $.jGrowl('Please select backup file first!', {sticky: false, header: 'Error'});
         return false;
     }
 
     $.post(basePath + 'restore', {"name": name}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Restore Database Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Restore Database Notification'});
     });
 
     $('#modal-dbrestore').modal('hide');
@@ -276,7 +281,7 @@ $('.btnRestore').click(function () {
 // delete all todos
 $('.btnDeleteAllTodos').click(function () {
     $.post(basePath + 'deletealltodos', {}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Delete All Todos Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Delete All Todos Notification'});
     });
 
     $('#modal-dellalltodos-confirm').modal('hide');
@@ -285,7 +290,7 @@ $('.btnDeleteAllTodos').click(function () {
 // clear whole database
 $('.btnClearDB').click(function () {
     $.post(basePath + 'cleardb', {}, function (response) {
-        $.jGrowl(response, { sticky: false, header: 'Clear Database Notification' });
+        $.jGrowl(response, {sticky: false, header: 'Clear Database Notification'});
     });
 
     $('#modal-cleardb-confirm').modal('hide');
