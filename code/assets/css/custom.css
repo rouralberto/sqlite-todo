@@ -173,3 +173,7 @@ i.glyphicon-ok {
 i.glyphicon-repeat {
     color: #D08E39;
 }
+
+.modal-body {
+    white-space: pre;
+}
